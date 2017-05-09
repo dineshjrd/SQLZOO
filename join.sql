@@ -65,10 +65,7 @@ where game.team1='POL' or game.team2='POL'
 group by 1,2
 
 /* 13. List every match with the goals scored by each team as shown.*/
-SELECT mdate,
-  team1,
-  sum(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
-team2, sum(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
-  FROM game LEFT JOIN goal ON id=matchid
+SELECT mdate,  team1,  sum(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1, team2, sum(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
+FROM game LEFT JOIN goal ON id=matchid
 group by  1,2,4
 order by mdate,matchid,team1,team2
